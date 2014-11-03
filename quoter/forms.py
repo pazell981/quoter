@@ -6,26 +6,26 @@ class UserForm(forms.ModelForm):
 	username = forms.CharField(max_length=30)
 	first_name = forms.CharField()
 	last_name = forms.CharField()
-	password=forms.CharField(max_length=30,widget=forms.PasswordInput())
-	password_conf=forms.CharField(max_length=30,widget=forms.PasswordInput())
-	email=forms.EmailField(required=False)
-	model = User
+	password1=forms.CharField(label='Password',max_length=30,widget=forms.PasswordInput())
+	password2=forms.CharField(label='Password Confirmation',max_length=30,widget=forms.PasswordInput())
+	email=forms.EmailField(required=True)
+	
+	class Meta:
+		model = User
+		fields = ("username", "email", "first_name", "last_name", "password1", "password2")
 
-	def clean_username(self):
-		try:
-			User.objects.get(username=self.cleaned_data['username'])
-		except User.DoesNotExist:
-			return self.cleaned_data['username']
-		raise forms.ValidationError("this user exist already")
-
-
-	def clean(self):
-		if 'password' in self.cleaned_data and 'password_conf' in self.cleaned_data:
-			if self.cleaned_data['password'] != self.cleaned_data['password_conf']:
-				raise forms.ValidationError("Passwords do not match each other")
-			return self.cleaned_data
+	def cleanUserData(self):
+		super(UserForm, self).clean()
+		password1 = self.cleaned_data.get('password1')
+		password2 = self.cleaned_data.get('password2')
+		if not password2:
+			raise forms.ValidationError("You must confirm your password")
+		if password1 != password2:
+			raise forms.ValidationError("Your passwords do not match")
+		return password2
 
 	def save(self):
+		self.user.set_password(self.cleaned_data["password2"])
 		new_user=User.objects.create_user(self.cleaned_data['username'],
 		                                  self.cleaned_data['email'],
 		                                  self.cleaned_data['password1'])

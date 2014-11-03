@@ -36,9 +36,6 @@ h1, h2, h3, h4, h5, h6{
 	height: 80%;
 	width: 100%;
 }
-.button{
-
-}
 .container{
 	width: 80vw;
 	height: 100vh;
@@ -48,13 +45,14 @@ h1, h2, h3, h4, h5, h6{
 .login form{
 	width: 80%;
 	margin: 5% auto;
+	position: fixed;
 }
 .login label{
   display: inline-block;
   position: relative;
   z-index: 2;
   text-align: center;
-  width: 30%;
+  width: 20%;
   padding-top: 0;
   padding-bottom: 0;
   border-style: solid;
@@ -81,7 +79,7 @@ h1, h2, h3, h4, h5, h6{
   margin: 0 0 1rem 0;
   padding: 0.5rem;
   height: 2.5rem;
-  width: 65%;
+  width: 75%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -135,7 +133,6 @@ input[type='submit'], .button {
    line-height: normal;
    margin: 0 0 1.25rem;
    position: relative;
-   margin-left: 75%;
    width: 20%;
    height: 2.5rem;
    text-decoration: none;
@@ -148,8 +145,20 @@ input[type='submit'], .button {
    color: white;
    transition: background-color 300ms ease-out;
  }
+ input[type='submit'] {
+ 	display: inherit;
+ 	position: absolute;
+  right: 5%;
+ }
  input[type='submit']:hover, input[type='submit']:focus, .button:hover, .button:focus {
-     background-color: #2285a2; 
+ 	background-color: #A9A9A9;
+ }
+ a.button{
+ 	display: inherit;
+ 	padding: .5rem 0px;
+ 	height: 1.5rem;
+ 	position: absolute;
+ 	right: 28%;
  }
 .helptext{
 	display: none;
@@ -186,8 +195,12 @@ input[type='submit'], .button {
 	width: 45%;
 	text-align: center;
 	position: relative;
-	margin-top: 25px;
+	margin: 25px auto 0px;
 	font-size: 1em;
+}
+.toolbar a{
+	text-decoration: none;
+	cursor: pointer;
 }
 .toolbar p:first-child{
 	border-right: 1px inset #C9C9C9;

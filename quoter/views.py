@@ -16,7 +16,7 @@ def index(request):
 		if user:
 			if user.is_active:
 				login(request, user)
-				return HttpResponseRedirect('/')
+				return HttpResponseRedirect('/quotes')
 			else:
 				return HttpResponse("Your account is disabled.")
 		else:
@@ -32,11 +32,17 @@ def register(request):
 		user_form = UserForm(data=request.POST)
 		if user_form.is_valid():
 			user = user_form.save()
-			user.set_password(user.password)
+			user.cleanUserData
 			user.save()
 			registered = True
+			return render(request, 'register.html', {'user_form': user_form, 'registered': registered, 'colors': colors} )
 		else:
 			print user_form.errors
+			return render(request, 'register.html', {'user_form': user_form, 'registered': registered, 'colors': colors} )
 	else:
 		user_form = UserForm()
 		return render(request, 'register.html', {'user_form': user_form, 'registered': registered, 'colors': colors} )
+
+def quotes(request):
+	random.shuffle(colors)
+	return render(request, 'quotes.html', {"colors": colors})

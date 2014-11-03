@@ -8,8 +8,8 @@
 	<body>
 		<div class='container'>
 			<div class='toolbar'>
-				<p>Log-in</p>
-				<p>My Account</p>
+				<p><a href='/'>Log-in</a></p>
+				<p><a href='/register/'>Register</a></p>
 			</div>
 			<div class='title'>
 				<h1>
@@ -30,8 +30,6 @@
 					<form id="user_form" method="post" action="/register/">
 					    {% csrf_token %}
 					    {{ user_form }}
-					    <label for='password_conf'>Password Confirmation:</label>
-					    <input id='password_conf' type='password' name='password_conf'>
 					    <input type='submit' name="submit" value="Register" class='button'/>
 					</form>
 					{% endif %}
