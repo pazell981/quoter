@@ -23,15 +23,18 @@
 			</div>
 			<div class='body'>
 				<div class='login'>
-	        <form id="login_form" method="post" action="/login/">
-	            {% csrf_token %}
-	            <label>Username</label>
-	            <input type="text" name="username" value="" size="50" />
-	            <label>Password</label>
-	            <input type="password" name="password" value="" size="50" />
-	            <a href="/register/">Register Here</a>
-	            <input type="submit" value="submit" class='button'/>
-	        </form>
+					{% if registered %}
+					<strong>Thank you for registering!</strong>
+					<a href="/">Return to the homepage to log-in.</a><br />
+					{% else %}
+					<form id="user_form" method="post" action="/register/">
+					    {% csrf_token %}
+					    {{ user_form }}
+					    <label for='password_conf'>Password Confirmation:</label>
+					    <input id='password_conf' type='password' name='password_conf'>
+					    <input type='submit' name="submit" value="Register" class='button'/>
+					</form>
+					{% endif %}
 				</div>
 			</div>
 		</div>

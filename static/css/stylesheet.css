@@ -6,7 +6,7 @@
 	font-family: 'Cardo', serif;
 }
 h1, h2, h3, h4, h5, h6{
-	font-family: 'Quattrocento', serif;
+	font-family: 'Quattrocento', serif !important;
 }
 .red{
 	color: red;
@@ -36,11 +36,123 @@ h1, h2, h3, h4, h5, h6{
 	height: 80%;
 	width: 100%;
 }
+.button{
+
+}
 .container{
 	width: 80vw;
 	height: 100vh;
 	margin: 0px auto;
 	overflow-y: scroll;
+}
+.login form{
+	width: 80%;
+	margin: 5% auto;
+}
+.login label{
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 30%;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  font-size: 1rem;
+  height: 2.35rem;
+  line-height: 2.3125rem;
+  border-right: none;
+  color: #333333;
+	background-color: #E9E9E9;
+	border: 1px solid #C9C9C9;
+}
+.login input{
+	-webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  background-color: white;
+  font-family: inherit;
+	border: 1px solid #C9C9C9;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.75);
+  display: inline-block;
+  font-size: 0.875rem;
+  margin: 0 0 1rem 0;
+  padding: 0.5rem;
+  height: 2.5rem;
+  width: 65%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 0;
+  vertical-align: top;
+  transition: box-shadow 0.45s, border-color 0.45s ease-in-out; 
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="time"]:focus,
+input[type="url"]:focus,
+input[type="color"]:focus,
+textarea:focus {
+  box-shadow: 0 0 5px #999999;
+  border-color: #999999; 
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="time"]:focus,
+input[type="url"]:focus,
+input[type="color"]:focus,
+textarea:focus {
+  background: #fafafa;
+  border-color: #999999;
+  outline: none; 
+ }
+input[type='submit'], .button {
+   border-style: solid;
+   border-width: 0px;
+   cursor: pointer;
+   font-family: 'Cardo', serif;
+   font-weight: normal;
+   line-height: normal;
+   margin: 0 0 1.25rem;
+   position: relative;
+   margin-left: 75%;
+   width: 20%;
+   height: 2.5rem;
+   text-decoration: none;
+   text-align: center;
+   -webkit-appearance: none;
+   display: inline-block;
+   font-size: 1rem;
+   background-color: #C9C9C9;
+   border-color: #C9C9C9;
+   color: white;
+   transition: background-color 300ms ease-out;
+ }
+ input[type='submit']:hover, input[type='submit']:focus, .button:hover, .button:focus {
+     background-color: #2285a2; 
+ }
+.helptext{
+	display: none;
 }
 .quotes{
 	height: 80%;
@@ -58,4 +170,25 @@ h1, h2, h3, h4, h5, h6{
 	-webkit-text-stroke-width: 2px;
 	-webkit-text-stroke-color: black;
 	border-bottom: 2px inset #C9C9C9;
+}
+.toolbar{
+	position: relative;
+	width: 20%;
+	height: 50px;
+	margin-top: -25px;
+	left: 75%;
+	background-color: #E9E9E9;
+	border: 2px solid #C9C9C9;
+	border-radius: 5px;
+}
+.toolbar p{
+	display: inline-block;
+	width: 45%;
+	text-align: center;
+	position: relative;
+	margin-top: 25px;
+	font-size: 1em;
+}
+.toolbar p:first-child{
+	border-right: 1px inset #C9C9C9;
 }

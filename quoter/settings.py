@@ -30,7 +30,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'apps.user_profile',
     'apps.view_quotes',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -106,3 +105,11 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
 )
+
+TEMPLATE_CONTEXT_PROCESSOR = (
+    'django.contrib.auto.context_processors.auth'
+)
+
+LOGIN_REDIRECT_URL = '/quotes'
+LOGIN_URL = '/'
+
