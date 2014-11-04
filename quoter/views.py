@@ -1,8 +1,8 @@
-from django.shortcuts import get_object_or_404, render_to_response, render
+from django.shortcuts import get_object_or_404, render_to_response, render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.template import RequestContext, loader
-from quoter.forms import UserForm
-from django.contrib.auth import authenticate, login
+from quoter.forms import UserForm, UpdateUser
+from django.contrib.auth import authenticate, login, logout
 import random
 
 colors = ['red', 'blue', 'yellow', 'green', 'purple', 'orange']
@@ -43,6 +43,33 @@ def register(request):
 		user_form = UserForm()
 		return render(request, 'register.html', {'user_form': user_form, 'registered': registered, 'colors': colors} )
 
+def update_profile(request):
+	if request.user.is_authenticated():
+		random.shuffle(colors)
+		if request.method == 'POST':
+		  update_form = UpdateUser(data=request.POST, instance=request.user)
+		  if form.is_valid():
+		  	form.save()
+		  	return render(request, 'update_profile.html', {'update_profile': update_form, 'colors': colors})
+		  else:
+		  	print update_profile
+		  	return render(request, 'update_profile.html', {'update_profile': update_form, 'colors': colors})
+		else:
+		  update_form = UpdateUser(instance=request.user)
+		  return render(request, 'update_profile.html', {'update_profile': update_form, 'colors': colors})
+	else:
+		return redirect('index')
+
 def quotes(request):
-	random.shuffle(colors)
-	return render(request, 'quotes.html', {"colors": colors})
+	if request.user.is_authenticated():
+		random.shuffle(colors)
+		return render(request, 'quotes.html', {"colors": colors})
+	else:
+	  return redirect('index')
+
+def logout_view(request):
+    logout(request)
+    return redirect('index')
+
+# def add_quote(request):
+
