@@ -8,8 +8,8 @@
 	<body>
 		<div class='container'>
 			<div class='toolbar'>
-				<p><a href='/'>Log-in</a></p>
-				<p><a href='/register/'>Register</a></p>
+				<p><a href="/quotes">Back to Quotes</a></p>
+				<p><a href="/logout">Log-off</a></p>
 			</div>
 			<div class='title'>
 				<h1>
@@ -22,17 +22,12 @@
 				</h1>
 			</div>
 			<div class='body'>
-				<div class='form'>
-					{% if registered %}
-					<strong>Thank you for registering!</strong>
-					<a href="/">Return to the homepage to log-in.</a><br />
-					{% else %}
+				<div class='login'>
 					<form id="user_form" method="post" action="/register/">
 					    {% csrf_token %}
-					    {{ user_form }}
-					    <input type='submit' name="submit" value="Register" class='button'/>
+					    {{ update_profile }}
+					    <input type='submit' name="submit" value="Update Profile" class='button'/>
 					</form>
-					{% endif %}
 				</div>
 			</div>
 		</div>

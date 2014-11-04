@@ -4,6 +4,16 @@
 	<head>
 		<title>Quoter</title>
 		<link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet.css' %}">
+		<script type="text/javascript" src="{% static 'lib/javascripts/jquery-2.1.1.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'lib/javascripts/masonry.pkgd.min.js' %}"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#container').masonry({
+				  columnWidth: 200,
+				  itemSelector: '.item'
+				});
+			})
+		</script>
 	</head>
 	<body>
 		<div class='container'>
@@ -22,9 +32,18 @@
 				</h1>
 			</div>
 			<div class='body'>
-				<div class='quotes'>
+				<div id='container' class='quotes'>
+					{% for quote in quotes %}
+						<div class='item'><quote>{{ quote.quote }}</quote>
+					{% endfor %}
 				</div>
-				<div class='add_quote'>
+				<div class='form add_quote'>
+					<form action='/quotes/' method='post' id='add_quote'>
+						{% csrf_token %}
+						{{ author_form }}
+						{{ quote_form }}
+						<input type="submit" value="Add Quote" class='button offset'/>
+					</form>
 				</div>
 			</div>
 		</div>
