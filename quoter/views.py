@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render_to_response, render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.template import RequestContext, loader
-from quoter.forms import UserForm, UpdateUser, QuoteForm, AuthorForm
+from quoter.forms import UserForm, UpdateUser, QuoteForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.db import models
@@ -64,24 +64,20 @@ def update_profile(request):
 @login_required
 def quotes(request):
 	random.shuffle(colors)
-	quotes = Quote.objects.all()
+	quotes = Quote.objects.select_related().all()
+	print dir(quotes)
 	if request.method == 'POST':
-		author_form = AuthorForm(data=request.POST)
 		quote_form = QuoteForm(data=request.POST)
-		if author_form.is_valid() and quote_form.is_valid():
-			author = author_form.save()
-			author.save()
+		if quote_form.is_valid():
 			quote = quote_form.save()
-			quote.save()
-			return render(request, 'quotes.html', {"colors": colors, "author_form": author_form, "quote_form": quote_form})
+			# quote.save()
+			return render(request, 'quotes.html', {"colors": colors, "quote_form": quote_form, "quotes": quotes})
 		else:
-			print author_form.errors
 			print quote_form.errors
-			return render(request, 'quotes.html', {"colors": colors, "author_form": author_form, "quote_form": quote_form})
+			return render(request, 'quotes.html', {"colors": colors, "quote_form": quote_form, "quotes": quotes})
 	else:
-		author_form = AuthorForm()
 		quote_form = QuoteForm()
-		return render(request, 'quotes.html', {"colors": colors, "author_form": author_form, "quote_form": quote_form})
+		return render(request, 'quotes.html', {"colors": colors, "quote_form": quote_form, "quotes": quotes})
 
 def logout_view(request):
     logout(request)

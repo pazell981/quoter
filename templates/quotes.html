@@ -8,8 +8,7 @@
 		<script type="text/javascript" src="{% static 'lib/javascripts/masonry.pkgd.min.js' %}"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
-				$('#container').masonry({
-				  columnWidth: 200,
+				$('#quotes_block').masonry({
 				  itemSelector: '.item'
 				});
 			})
@@ -32,15 +31,24 @@
 				</h1>
 			</div>
 			<div class='body'>
-				<div id='container' class='quotes'>
-					{% for quote in quotes %}
-						<div class='item'><quote>{{ quote.quote }}</quote>
-					{% endfor %}
+				<div class='quotes'>
+					<div  id='quotes_block'>
+						{% for quote in quotes %}
+							<div class='item'>
+								<blockquote>
+									{{ quote.quote }}
+									<cite>
+										{{ quote.author.first_name }}
+										{{ quote.author.last_name }}
+									</cite>
+								</blockquote>
+							</div>
+						{% endfor %}
+					</div>
 				</div>
 				<div class='form add_quote'>
 					<form action='/quotes/' method='post' id='add_quote'>
 						{% csrf_token %}
-						{{ author_form }}
 						{{ quote_form }}
 						<input type="submit" value="Add Quote" class='button offset'/>
 					</form>

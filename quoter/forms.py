@@ -1,5 +1,4 @@
 from django import forms
-from django.db import models
 from django.forms import ModelForm
 from django.contrib.auth.models import User
 from apps.view_quotes.models import Author, Quote
@@ -66,35 +65,16 @@ class UpdateUser(forms.ModelForm):
 			user.save()
 		return user
 
-class QuoteForm(forms.ModelForm):
-	author = models.ForeignKey(Author)
-	quote = models.TextField()
+class QuoteForm(forms.Form):
+	first_name = forms.CharField(label='Author First Name', max_length=25)
+	last_name = forms.CharField(label='Author Last Name', max_length=50)
+	quote = forms.CharField(widget=forms.Textarea)
 	class Meta:
-		model = Quote
-		fields = ('quote',)
+		fields = ('first_name', 'last_name', 'quote')
 	def save(self):
-		author_id = Author.objects.get(first_name=auth_first_name, last_name=auth_last_name)
-		quote = Quote(author=author_id.id, quote=self.cleaned_data['quote'])
+		author = Author.objects.get_or_create(first_name=self.cleaned_data['first_name'],
+		                  last_name=self.cleaned_data['last_name'])
+		quote = Quote.objects.create(author=author[0], quote=self.cleaned_data['quote'])
 		quote.save()
 		return quote
-
-class AuthorForm(forms.ModelForm):
-	first_name = models.CharField(max_length=25)
-	last_name = models.CharField(max_length=50)
-	class Meta:
-		model = Author
-		fields = ('first_name', 'last_name')
-	def save(self):
-		auth_first_name = self.cleaned_data.get('first_name')
-		auth_last_name = self.cleaned_data.get('last_name')
-		try:
-			Author.objects.get(first_name=auth_first_name, last_name=auth_last_name)
-		except Exception:
-			author = Author(first_name=self.cleaned_data['first_name'],
-		                  last_name=self.cleaned_data['last_name'])
-			author.save()
-			return author
-
-
-
-
+			
