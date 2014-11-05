@@ -119,5 +119,7 @@ TEMPLATE_DIRS = (
 LOGIN_REDIRECT_URL = '/quotes'
 LOGIN_URL = '/'
 
-DATABASES['default'] =  dj_database_url.config()
+DATABASES = {}
+DATABASES['default'] =  dj_database_url.config(default='postgres://vgzwxqeyllpoed:G6-j1Dm9ZyGbwJoQNHThuUuHlh@ec2-54-163-255-191.compute-1.amazonaws.com:5432/d31vbsbv5jdk42')
+DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
 
