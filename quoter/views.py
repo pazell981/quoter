@@ -70,7 +70,7 @@ def quotes(request):
 		quote_form = QuoteForm(data=request.POST)
 		if quote_form.is_valid():
 			quote = quote_form.save()
-			# quote.save()
+			quote_form = QuoteForm()
 			return render(request, 'quotes.html', {"colors": colors, "quote_form": quote_form, "quotes": quotes})
 		else:
 			print quote_form.errors
