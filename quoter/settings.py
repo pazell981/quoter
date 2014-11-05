@@ -27,7 +27,12 @@ DEBUG = False
 
 TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'localhost', 
+    '127.0.0.1', 
+    '.herokuapp.com', 
+    '.herokuapp.com.'
+]
 
 
 # Application definition
@@ -87,6 +92,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, '../apps/static'),
+    os.path.join(BASE_DIR, '../lib'),
 )
 
 STATICFILES_FINDERS = (

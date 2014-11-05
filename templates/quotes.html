@@ -4,8 +4,8 @@
 	<head>
 		<title>Quoter</title>
 		<link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet.css' %}">
-		<script type="text/javascript" src="{% static 'lib/javascripts/jquery-2.1.1.min.js' %}"></script>
-		<script type="text/javascript" src="{% static 'lib/javascripts/masonry.pkgd.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'javascripts/jquery-2.1.1.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'javascripts/masonry.pkgd.min.js' %}"></script>
 
 	</head>
 	<body>
@@ -28,7 +28,7 @@
 				<div class='quotes'>
 					<div  id='quotes_block'>
 						{% for quote in quotes %}
-							{% cycle '1' '2' '3' '4' as counter silent %}
+							{% cycle '1' '2' '3' '4' '5' as counter silent %}
 							<div class='item w{{counter}}'>
 								<blockquote>
 									{{ quote.quote }}

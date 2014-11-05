@@ -173,7 +173,7 @@ a.button {
     display: none;
 }
 .item {
-	margin: 10px;
+	margin: 20px 0px;
 }
 .offset {
     right: 15% !important;
@@ -224,16 +224,19 @@ a.button {
     border-right: 1px inset #C9C9C9;
 }
 .w1{
-	width: 20%;
-}
-.w2{
-	width: 35%;
-}
-.w3{
 	width: 15%;
 }
+.w2{
+	width: 25%;
+}
+.w3{
+	width: 10%;
+}
 .w4{
-	width: 30%;
+	width: 20%;
+}
+.w5{
+    width: 30%;
 }
 #add_quote {
     margin: 0px !important;
