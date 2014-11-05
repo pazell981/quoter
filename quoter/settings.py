@@ -13,6 +13,7 @@ import os
 import dj_database_url
 
 local_path = lambda path: os.path.join(os.path.abspath(os.path.dirname(__file__)), path)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Quick-start development settings - unsuitable for production
@@ -22,9 +23,9 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECRET_KEY = '396me-r(=o$g^8*$!)myrb5uqn7l84$k3t2engu^w5z7-g4w)s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -60,16 +61,6 @@ WSGI_APPLICATION = 'quoter.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'quoter',
-#         'USER': 'postgres',
-#         'PASSWORD': 'hyperion',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
-#     }
-# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -88,12 +79,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-MEDIA_ROOT = os.environ.get('MEDIA_ROOT', local_path('../media/'))
-MEDIA_URL = os.environ.get('MEDIA_URL', '/media/')
+MEDIA_ROOT = local_path('../media/')
+MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.environ.get('STATIC_ROOT', local_path('../static/'))
-STATIC_URL = os.environ.get('STATIC_URL', '/static/')
-STATICFILES_DIRS = ()
+STATIC_ROOT = os.path.join(BASE_DIR, '../static')
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, '../apps/static'),
+)
+
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -107,7 +102,8 @@ TEMPLATE_LOADERS = (
 )
 
 TEMPLATE_CONTEXT_PROCESSOR = (
-    'django.contrib.auto.context_processors.auth'
+    'django.contrib.auto.context_processors.auth',
+    'django.core.context_processors.static',
 )
 
 TEMPLATE_DIRS = (

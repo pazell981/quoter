@@ -10,3 +10,4 @@ urlpatterns = patterns('',
     url(r'^update_profile/$', 'quoter.views.update_profile', name='update_profile'),
     # url(r'^admin/', include(admin.site.urls)),
 )
+
