@@ -27,7 +27,6 @@ pyparsing==2.0.1
 python-dateutil==2.2
 pytz==2013.7
 rsa==3.1.2
-scipy==0.13.0b1
 six==1.4.1
 static3==0.5.1
 whitenoise==1.0.3
