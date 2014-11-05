@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet.css' %}">
 		<script type="text/javascript" src="{% static 'javascripts/jquery-2.1.1.min.js' %}"></script>
 		<script type="text/javascript" src="{% static 'javascripts/masonry.pkgd.min.js' %}"></script>
-
+		<script type="text/javascript" src="{% static 'javascripts/quoter.js' %}"></script>
 	</head>
 	<body>
 		<div class='container'>
@@ -43,6 +43,8 @@
 				</div>
 				<div class='form add_quote'>
 					<form action='/quotes/' method='post' id='add_quote'>
+						<p id='form_success'>Thank you for your submission!</p>
+						<p id='form_failure'>We're sorry there was an error please try your submission again.</p>
 						{% csrf_token %}
 						{{ quote_form }}
 						<input type="submit" value="Add Quote" class='button offset'/>

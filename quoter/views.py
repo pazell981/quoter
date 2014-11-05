@@ -68,11 +68,21 @@ def quotes(request):
 		quote_form = QuoteForm(data=request.POST)
 		if quote_form.is_valid():
 			quote = quote_form.save()
+			response = ("quote": quote.quote, "first_name": quote.author.first_name, "last_name": quote.author.last_name, "status": "success")
 			quote_form = QuoteForm()
-			return render(request, 'quotes.html', {"colors": colors, "quote_form": quote_form, "quotes": quotes})
+			return HttpResponse(
+            json.dumps(response),
+            content_type="application/json"
+        		)
+			# return render(request, 'quotes.html', {"colors": colors, "quote_form": quote_form, "quotes": quotes})
 		else:
-			print quote_form.errors
-			return render(request, 'quotes.html', {"colors": colors, "quote_form": quote_form, "quotes": quotes})
+			response = ("status": "failure",)
+			return HttpResponse(
+            json.dumps(response),
+            content_type="application/json"
+        		)
+			# print quote_form.errors
+			# return render(request, 'quotes.html', {"colors": colors, "quote_form": quote_form, "quotes": quotes})
 	else:
 		quote_form = QuoteForm()
 		return render(request, 'quotes.html', {"colors": colors, "quote_form": quote_form, "quotes": quotes})
