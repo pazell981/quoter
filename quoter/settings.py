@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-PROJECT_DIR = os.path.join(PROJECT_ROOT,'../')
+PROJECT_DIR = os.path.join(PROJECT_ROOT,'../quoter')
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Quick-start development settings - unsuitable for production
@@ -56,27 +56,27 @@ WSGI_APPLICATION = 'quoter.wsgi.application'
 
 
 MEDIA_DIRS = (
-    os.path.join(BASE_DIR, '../media').replace('\\','/'),
+    os.path.join(PROJECT_ROOT, '../media').replace('\\','/'),
 )
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, '../templates').replace('\\','/'),
+    os.path.join(PROJECT_ROOT, '../templates').replace('\\','/'),
 )
 
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'quoter',
-        'USER': 'postgres',
-        'PASSWORD': 'hyperion',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'quoter',
+#         'USER': 'postgres',
+#         'PASSWORD': 'hyperion',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -99,7 +99,7 @@ MEDIA_ROOT = 'media'
 STATIC_ROOT = os.path.join(PROJECT_ROOT,'static/')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_DIR,'static/'),
+    os.path.join(PROJECT_DIR,'staticfiles/'),
 )
 
 
