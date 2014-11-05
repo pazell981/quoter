@@ -43,8 +43,8 @@ h1, h2, h3, h4, h5, h6 {
     color: purple;
 }
 .add_quote {
-		position: absolute;
-    height: 30%;
+	position: absolute;
+    height: 16rem;
     bottom: 0px;
     border-top: 2px inset #C9C9C9;
 }
