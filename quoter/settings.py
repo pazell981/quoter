@@ -93,9 +93,7 @@ MEDIA_URL = os.environ.get('MEDIA_URL', '/media/')
 
 STATIC_ROOT = os.environ.get('STATIC_ROOT', local_path('../static/'))
 STATIC_URL = os.environ.get('STATIC_URL', '/static/')
-STATICFILES_DIRS = (
-    local_path('../static/'),
-)
+STATICFILES_DIRS = ()
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
