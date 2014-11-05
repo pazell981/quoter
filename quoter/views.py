@@ -34,9 +34,7 @@ def register(request):
 	if request.method == 'POST':
 		user_form = UserForm(data=request.POST)
 		if user_form.is_valid():
-			user = user_form.save()
-			user.cleanUserData
-			user.save()
+			user_form.save()
 			registered = True
 			return render(request, 'register.html', {'user_form': user_form, 'registered': registered, 'colors': colors} )
 		else:
