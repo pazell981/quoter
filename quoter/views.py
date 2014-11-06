@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.db import models
 from apps.view_quotes.models import Quote
 import random
+import json
 
 colors = ['red', 'blue', 'yellow', 'green', 'purple', 'orange']
 
@@ -68,15 +69,14 @@ def quotes(request):
 		quote_form = QuoteForm(data=request.POST)
 		if quote_form.is_valid():
 			quote = quote_form.save()
-			response = ("quote": quote.quote, "first_name": quote.author.first_name, "last_name": quote.author.last_name, "status": "success")
+			response = {"quote": quote.quote, "first_name": quote.author.first_name, "last_name": quote.author.last_name, "status": "success"}
 			quote_form = QuoteForm()
-			return HttpResponse(
-            json.dumps(response),
+			return HttpResponse(json.dumps(response),
             content_type="application/json"
         		)
 			# return render(request, 'quotes.html', {"colors": colors, "quote_form": quote_form, "quotes": quotes})
 		else:
-			response = ("status": "failure",)
+			response = {"status": "failure",}
 			return HttpResponse(
             json.dumps(response),
             content_type="application/json"
