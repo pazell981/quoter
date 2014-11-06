@@ -64,7 +64,6 @@ def update_profile(request):
 def quotes(request):
 	random.shuffle(colors)
 	quotes = Quote.objects.select_related().all()
-	print dir(quotes)
 	if request.method == 'POST':
 		quote_form = QuoteForm(data=request.POST)
 		if quote_form.is_valid():
