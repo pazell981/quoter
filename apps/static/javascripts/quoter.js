@@ -24,39 +24,39 @@ $(document).ready(function(){
     if (window.location != window.parent.location){
         setTimeout(function(){
         	$("#login_form input[name='username']").val('u')
-        }, 500)
+        }, 250)
         setTimeout(function(){
         	$("#login_form input[name='username']").val('us')
-        }, 1000)
+        }, 500)
         setTimeout(function(){
         	$("#login_form input[name='username']").val('use')
-        }, 1500)
+        }, 750)
         setTimeout(function(){
         	$("#login_form input[name='username']").val('user')
-        }, 2000)
+        }, 1000)
         setTimeout(function(){
         	$("#login_form input[name='password']").val('J')
-        }, 2500)
+        }, 1250)
         setTimeout(function(){
         	$("#login_form input[name='password']").val('Ja')
-        }, 3000)
+        }, 1500)
         setTimeout(function(){
         	$("#login_form input[name='password']").val('JaV')
-        }, 3500)
+        }, 1750)
         setTimeout(function(){
         	$("#login_form input[name='password']").val('JaVa')
-        }, 4000)
+        }, 2000)
         setTimeout(function(){
         	$("#login_form input[name='password']").val('JaVa9')
-        }, 4500)
+        }, 2250)
         setTimeout(function(){
         	$("#login_form input[name='password']").val('JaVa98')
-        }, 5000)
+        }, 2500)
         setTimeout(function(){
         	$("#login_form input[name='password']").val('JaVa981')
-        }, 5500)
+        }, 2750)
         setTimeout(function(){
         	$("#submit").trigger('click')
-        }, 6000)
+        }, 3000)
     }
 })
