@@ -35,7 +35,7 @@ $(document).ready(function(){
         	$("#login_form input[name='username']").val('user')
         }, 2000)
         setTimeout(function(){
-        	$("#login_form input[name='password']").val('Ja')
+        	$("#login_form input[name='password']").val('J')
         }, 2500)
         setTimeout(function(){
         	$("#login_form input[name='password']").val('Ja')
