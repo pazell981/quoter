@@ -21,7 +21,6 @@ $(document).ready(function(){
 	    }, 5000);
 	    return false;
 	});
-	function inIframe () {
     try {
         return window.self !== window.top;
     } catch (e) {
@@ -62,5 +61,4 @@ $(document).ready(function(){
         	$("#submit").trigger('click')
         }, 6000)
     }
-}
 })
