@@ -21,41 +21,42 @@ $(document).ready(function(){
 	    }, 5000);
 	    return false;
 	});
+    console.log(window.self)
     try {
         return window.self !== window.top;
     } catch (e) {
         setTimeout(function(){
-        	$("input[name='username']").val('u')
+        	$("#login_form input[name='username']").val('u')
         }, 500)
         setTimeout(function(){
-        	$("input[name='username']").val('us')
+        	$("#login_form input[name='username']").val('us')
         }, 1000)
         setTimeout(function(){
-        	$("input[name='username']").val('use')
+        	$("#login_form input[name='username']").val('use')
         }, 1500)
         setTimeout(function(){
-        	$("input[name='username']").val('user')
+        	$("#login_form input[name='username']").val('user')
         }, 2000)
         setTimeout(function(){
-        	$("input[name='password']").val('Ja')
+        	$("#login_form input[name='password']").val('Ja')
         }, 2500)
         setTimeout(function(){
-        	$("input[name='password']").val('Ja')
+        	$("#login_form input[name='password']").val('Ja')
         }, 3000)
         setTimeout(function(){
-        	$("input[name='password']").val('JaV')
+        	$("#login_form input[name='password']").val('JaV')
         }, 3500)
         setTimeout(function(){
-        	$("input[name='password']").val('JaVa')
+        	$("#login_form input[name='password']").val('JaVa')
         }, 4000)
         setTimeout(function(){
-        	$("input[name='password']").val('JaVa9')
+        	$("#login_form input[name='password']").val('JaVa9')
         }, 4500)
         setTimeout(function(){
-        	$("input[name='password']").val('JaVa98')
+        	$("#login_form input[name='password']").val('JaVa98')
         }, 5000)
         setTimeout(function(){
-        	$("input[name='password']").val('JaVa981')
+        	$("#login_form input[name='password']").val('JaVa981')
         }, 5500)
         setTimeout(function(){
         	$("#submit").trigger('click')
