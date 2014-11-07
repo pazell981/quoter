@@ -21,10 +21,7 @@ $(document).ready(function(){
 	    }, 5000);
 	    return false;
 	});
-    console.log(window.self)
-    try {
-        return window.self !== window.top;
-    } catch (e) {
+    if (window.location != window.parent.location){
         setTimeout(function(){
         	$("#login_form input[name='username']").val('u')
         }, 500)
