@@ -22,6 +22,7 @@ $(document).ready(function(){
 	    return false;
 	});
 })
+document.domain = "pazellmer.com";
 window.onload = function() {
     parent.iframeLoaded();
 }
